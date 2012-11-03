@@ -36,11 +36,11 @@ body{
 }
 .enyo-input, .enyo-input.enyo-input-focus {
 	-webkit-border-image: url(../images/roundedbox.png) 18 18 17 18 repeat repeat;
-	width: 570px;
+	width: 95%;
 	margin: 13px auto;
 }
 .enyo-group, .enyo-group.labeled{
-	width: 708px;
+	width: 90%;
 	margin: 8px auto;
 }
 .enyo-input > .enyo-input-spacing {
@@ -71,7 +71,7 @@ body{
 .enyo-radiobutton, .enyo-tabbutton {
 	text-shadow: #000000 1px 1px 1px;
 	text-transform: uppercase;
-	padding: 15px 10px 13px 10px;
+	padding: 15px 0 13px 0;
 }
 .empty-text, .noresult {
 	text-align: center;

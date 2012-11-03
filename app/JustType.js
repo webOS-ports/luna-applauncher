@@ -42,12 +42,10 @@ enyo.kind({
 			}, 
 			{kind: "Control", name:"tabControl", showing:false, components: [
                         {kind: "RadioGroup", onclick: "tabClickHandler", components: [
-						{disabled: true,  value: 0},
                                 {label: $L('All'), name: 'rgAll', value: 1, disabled: false},
                                 {label: $L('Contacts'), name:'rgContacts', value: 2, disabled: false},
                                 {label: $L('Content'), name:'rgContent', value: 3, disabled: false},	
 								{label: $L('Actions'), name:'rgActions', value: 4, disabled: false},
-								{disabled: true,  value: 5},
                         ]},
 	
                 ]

@@ -31,6 +31,8 @@ enyo.kind({
 		{
 			flex: 1,
 			kind: "Scroller",
+			autoHorizontal: false,
+			horizontal: false,
 			components: [
 			             {
 			            	 kind:"LaunchItems", name:"launchItems"
