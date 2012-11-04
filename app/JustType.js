@@ -73,6 +73,8 @@ enyo.kind({
 		this.delayedDoSearch = Util.debounce(undefined, enyo.bind(this, "doSearch"), 0.5);
 		this.wasValidEmailOrWebString = false;
 		this.$.radioGroup.setValue(1);
+		var size = (Math.min(window.innerWidth, window.innerHeight) * 0.95) + 'px';
+		this.$.searchField.applyStyle('width', size);
 	},
 	loadLibraries: function() {
 		try {

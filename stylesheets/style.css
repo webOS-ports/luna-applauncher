@@ -36,7 +36,6 @@ body{
 }
 .enyo-input, .enyo-input.enyo-input-focus {
 	-webkit-border-image: url(../images/roundedbox.png) 18 18 17 18 repeat repeat;
-	width: 95%;
 	margin: 13px auto;
 }
 .enyo-group, .enyo-group.labeled{
