@@ -5,6 +5,7 @@
 	"main": "index.html",
 	"id": "com.palm.launcher",
 	"icon": "icon.png",
-	"theme":"palm-dark"
+	"theme":"palm-dark",
+	"visible": "false"
 }
 
