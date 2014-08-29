@@ -29,10 +29,10 @@ enyo.kind({
 	
 	kEasterStrings: ["upupdowndownleftrightleftrightbastart", "webos20090606"],
 	kEasterApp: { 
-	title: 'Developer Mode Enabler',  
-	icon: '/usr/palm/applications/org.webosports.app.settings/assets/icon-devmode-64.png',  
-	id: 'com.palm.app.devmodeswitcher', 
-	params: {} 
+	title: 'Developer Mode Enabler',
+	icon: '/usr/palm/applications/org.webosports.app.settings/assets/icon-devmode-64.png',
+	id: 'org.webosports.app.settings',
+	params: {"page":"DevModeOptions"}
 	},
 	
 	components: [
