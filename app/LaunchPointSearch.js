@@ -32,7 +32,7 @@ enyo.kind({
 	title: 'Developer Mode Enabler',
 	icon: '/usr/palm/applications/org.webosports.app.settings/assets/icon-devmode-64.png',
 	id: 'org.webosports.app.settings',
-	params: {"page":"DevModeOptions"}
+	params: {"page":"DevOptions"}
 	},
 	
 	components: [
