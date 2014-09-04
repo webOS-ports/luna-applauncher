@@ -43,3 +43,13 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
+
+The following file:
+search/search-icon-duckduckgo.pgn
+
+is based on the following file which is distributed under the Apache License, Version 2.0 :
+
+Copyright 2010 Copyright 2010 Duck Duck Go, Inc.
+
+https://github.com/duckduckgo/firefox-zeroclickinfo/blob/master/data/img/icon_48.png
