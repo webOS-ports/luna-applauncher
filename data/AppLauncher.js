@@ -34,7 +34,7 @@ enyo.kind({
   	
   	launchBrowser: function(url) {
 		var params = {scene: 'page', target: url};
-		this.$.launch.call({id:"com.palm.app.browser", params:params});		
+		this.$.launch.call({id:"org.webosports.app.browser", params:params});
 	},
 	
 	launchMessaging: function(contactId, addr, label, serviceName, type) {
@@ -43,13 +43,13 @@ enyo.kind({
     		params = {"personId":contactId, "address":addr, "serviceName":serviceName, "type":type}
 		else
 			params = {"compose":{"ims":[{"value":addr, "type":label}],"personId":contactId}};
-		this.$.launch.call({id:'com.palm.app.messaging', params:params});    
+		this.$.launch.call({id:'org.webosports.app.messaging', params:params});    
   	},
 	
 	launchSMS: function(addr,contactId) {
   		var params = {};
 		params = {"compose":{"phoneNumbers":[{"value":addr}], "personId":contactId}};
-		this.$.launch.call({id:'com.palm.app.messaging', params:params});     
+		this.$.launch.call({id:'org.webosports.app.messaging', params:params});
   	},
 	
 	launchPhone: function(number, id, label) {
@@ -64,7 +64,7 @@ enyo.kind({
 				params = {"address": number, "service":"phone"};
 		}
 		params.transport = "com.palm.telephony";
-		this.$.launch.call({id:'com.palm.app.phone', params:params});         
+		this.$.launch.call({id:'org.webosports.app.phone', params:params});
 	},
 	
 	launchSkypeCall: function(number, id, label, isVideoCall) {
@@ -75,7 +75,7 @@ enyo.kind({
 			params.label  = label;
 		params.transport = "com.palm.skype.call";
 		params.video = isVideoCall;
-		this.$.launch.call({id:'com.palm.app.phone', params:params});      
+		this.$.launch.call({id:'org.webosports.app.phone', params:params});
 	},
 	
 	launchSkypePhone: function(number, id, label) {
@@ -85,7 +85,7 @@ enyo.kind({
 		if(label)
 			params.label  = label;
 		
-		this.$.launch.call({id:'com.palm.app.phone', params:params});          
+		this.$.launch.call({id:'org.webosports.app.phone', params:params});
 	},
 	
 	launchAddToContacts: function(number,type) {
@@ -173,7 +173,7 @@ enyo.kind({
 	
 	launchExistingContact: function(id) {
 		var params = {'id': id, 'launchType':'showPerson'};
-		this.$.launch.call({id:'com.palm.app.contacts', params:params});   
+		this.$.launch.call({id:'org.webosports.app.contacts', params:params});
 	},
 	
 	launchReminder:function(id){
@@ -182,7 +182,7 @@ enyo.kind({
 			personId:id,
 			focusField:true
 		}
-		this.$.launch.call({id:'com.palm.app.contacts', params:params});  	
+		this.$.launch.call({id:'org.webosports.app.contacts', params:params});
 	},
 	
 	launchHelp: function() {
@@ -191,7 +191,7 @@ enyo.kind({
 	},
 	
 	launchPreferences: function() {
-		 this.$.launch.call({id:"com.palm.app.searchpreferences"});
+		 this.$.launch.call({id:"org.webosports.app.settings",params:{page:"SearchPreferences"}});
 	},
 	
 	launchApp: function(id, param) {

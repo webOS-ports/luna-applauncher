@@ -185,7 +185,7 @@ enyo.kind({
 			var params = {scene: 'page', target: temp.evaluate({
 				searchTerms: searchString, searchTerm: searchString, "startPage?":''
 			})};
-			this.$.launch.call({id:"com.palm.app.browser", params:params});
+			this.$.launch.call({id:"org.webosports.app.browser", params:params});
 		}
 		else if(item.type == "app") {
 			var appinfo = {};
@@ -205,7 +205,7 @@ enyo.kind({
 				enyo.log("Error - Universal Search - App Launch Parameter Type is not supported")
 				return;
 			}
-			if(appinfo.id == "com.palm.app.maps") {
+			if(appinfo.id == "org.webosports.app.maps") {
 				this.appinfo = appinfo;
 				this.appinfo.params[launchParam] = decodeURIComponent(searchString);
 				this.$.getAutoLocate.call();
@@ -297,7 +297,7 @@ enyo.kind({
 		var params = {scene: 'page', target: temp.evaluate({
 				searchTerms: encodeURIComponent(inSender.getContent() || this.searchTerm)
 			})};
-		this.$.launch.call({id:"com.palm.app.browser", params:params});
+		this.$.launch.call({id:"org.webosports.app.browser", params:params});
 	},
 	
 	searchInDefaultEngine: function(inSender, inEvent) {
@@ -306,7 +306,7 @@ enyo.kind({
 		var params = {scene: 'page', target: temp.evaluate({
 				searchTerms: encodeURIComponent(enyo.$.justTypeApp.$.justType.getFilterText()), "startPage?":''
 			})};
-		this.$.launch.call({id:"com.palm.app.browser", params:params});
+		this.$.launch.call({id:"org.webosports.app.browser", params:params});
 	},
 	
 	onEnterKey: function() {

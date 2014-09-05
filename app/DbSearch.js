@@ -340,7 +340,7 @@ enyo.kind({
 		this.$.label.content = enyo.string.escapeHtml(this.dbSearchItemName);
 		if(this.dbSearchItemId == "com.palm.app.email" || this.dbSearchItemId == "com.palm.app.enyo-email")
 			this.$.icon.addClass("email");
-		else if(this.dbSearchItemId == "com.palm.app.browser")
+		else if(this.dbSearchItemId == "org.webosports.app.browser")
 			this.$.icon.addClass("web");
 		else if(this.iconFilePath && !Util.isBlank(this.iconFilePath))
 			this.$.icon.applyStyle("background-image", "url(" + this.iconFilePath + ")");
