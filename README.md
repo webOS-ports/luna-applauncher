@@ -116,7 +116,7 @@ limitations under the License.
 
 
 The following file:
-search/search-icon-duckduckgo.pgn
+images/search-icon-duckduckgo.png
 
 is based on the following file which is distributed under the Apache License, Version 2.0 :
 
