@@ -36,6 +36,7 @@ body{
 }
 .enyo-input, .enyo-input.enyo-input-focus {
 	-webkit-border-image: url(../images/roundedbox.png) 18 18 17 18 repeat repeat;
+	margin: 13px auto;
 /*
 	Alternative value that seems to work:
 	-webkit-border-image: url(../images/roundedbox.png) 14 20;
