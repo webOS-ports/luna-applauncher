@@ -7,6 +7,6 @@
 	"icon": "icon.png",
 	"theme":"palm-dark",
 	"visible": "false",
-	"requiredPermissions": ["database", "system", "services", "applications"]
+	"requiredPermissions": ["all"]
 }
 
