@@ -6,6 +6,6 @@
 	"id": "com.palm.launcher",
 	"icon": "icon.png",
 	"theme":"palm-dark",
-	"visible": "false"
+	"visible": "false",
+	"requiredPermissions": ["applications", "application.internal", "database", "database.internal", "services", "system"]
 }
-
