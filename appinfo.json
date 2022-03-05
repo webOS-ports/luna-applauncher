@@ -6,6 +6,8 @@
 	"id": "com.palm.launcher",
 	"icon": "icon.png",
 	"theme":"palm-dark",
-	"visible": "false",
+	"defaultWindowType": "system_ui",
+	"noSplashOnLaunch": true,
+	"visible": false,
 	"requiredPermissions": ["applications", "applications.internal", "database", "database.internal", "services", "system"]
 }
