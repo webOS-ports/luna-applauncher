@@ -35,7 +35,7 @@ enyo.kind({
 			caption: $L("Quick Actions")
 		},
 		{
-			kind:"PalmService", name:"launch", service:"palm://com.palm.applicationManager/", method:"launch"
+			kind:"PalmService", name:"launch", service:"luna://com.webos.service.applicationManager/", method:"launch"
 		}
 			
 	],

@@ -20,7 +20,7 @@ enyo.kind({
 	name:"AppLauncher",
 	kind: "Component",
 	components: [
-	             {kind:"PalmService", name:"launch", service:"palm://com.palm.applicationManager/", method:"open"},
+	             {kind:"PalmService", name:"launch", service:"luna://com.palm.applicationManager/", method:"open"},
 	             {name: "contactPseudoDetails", kind: "com.palm.library.contactsui.detailsDialog", showDone: false, onAddToNew: "addToNewContact", onAddToExisting: "addToNewContact", onCancelClicked:"handlePseudoContactCancel"}
 	],
 	
