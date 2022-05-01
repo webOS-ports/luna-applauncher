@@ -68,13 +68,13 @@ enyo.kind({
 			kind:"WebService", name:"suggestSearch", onSuccess:"handleSearchSuggestion",headers: {"Content-Type": "application/json","Connection": "close"}
 		},
 		{
-			kind:"PalmService", name:"launch", service:"palm://com.palm.applicationManager/", method:"launch"
+			kind:"PalmService", name:"launch", service:"luna://com.webos.service.applicationManager/", method:"launch"
 		},
 		{
-			kind:"PalmService", name:"getAutoLocate", service:"palm://com.palm.location/", method:"getAutoLocate", onSuccess:"handleGPSAutoLocate" 
+			kind:"PalmService", name:"getAutoLocate", service:"luna://com.palm.location/", method:"getAutoLocate", onSuccess:"handleGPSAutoLocate" 
 		},
 		{
-			kind:"PalmService", name:"getCurrentPosition", service:"palm://com.palm.location/", method:"getCurrentPosition", onSuccess:"handleGPSCurrentPosition" 
+			kind:"PalmService", name:"getCurrentPosition", service:"luna://com.palm.location/", method:"getCurrentPosition", onSuccess:"handleGPSCurrentPosition" 
 		}
 			
 	],

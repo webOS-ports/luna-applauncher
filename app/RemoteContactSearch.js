@@ -65,7 +65,7 @@ enyo.kind({
 	            if ( capabilityProvider.capability === "REMOTECONTACTS" ) {
 					  	var item = {};
 					  	item.id = accounts[i]._id;
-					  	item.queryUri = "palm://com.palm.eas/queryGal";//capabilityProvider.query;
+					  	item.queryUri = "luna://com.palm.eas/queryGal";//capabilityProvider.query;
 					  	item.queryParams = {accountId: accounts[i]._id,query: "",limit: 100}; //set the limit to 50 search results.
 						remoteAccounts.push(item);
 	            }

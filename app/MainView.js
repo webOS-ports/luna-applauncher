@@ -61,10 +61,10 @@ enyo.kind({
 			]
 		},
 		{
-			kind:"PalmService", name:"getSearchEngines", service:"palm://com.palm.universalsearch/", method:"getUniversalSearchList", subscribe:true, onSuccess:"handleUniversalSearchListResponse" 
+			kind:"PalmService", name:"getSearchEngines", service:"luna://com.palm.universalsearch/", method:"getUniversalSearchList", subscribe:true, onSuccess:"handleUniversalSearchListResponse" 
 		},
 		{
-			kind:"PalmService", name:"getAllSearchPreference", service:"palm://com.palm.universalsearch/", method:"getAllSearchPreference", subscribe:true, onSuccess:"handleSearchPreferenceResponse"
+			kind:"PalmService", name:"getAllSearchPreference", service:"luna://com.palm.universalsearch/", method:"getAllSearchPreference", subscribe:true, onSuccess:"handleSearchPreferenceResponse"
 		},
 	],
 	

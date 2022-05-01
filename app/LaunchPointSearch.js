@@ -41,10 +41,10 @@ enyo.kind({
 					
 					}]
 		},
-		{kind:"PalmService", name:"appSearch", service:"palm://com.palm.applicationManager/", method:"searchApps", onResponse: "handleAppSearchResponse"},
-		{kind:"PalmService", name:"listLaunchPoints", service:"palm://com.palm.applicationManager/", method:"listLaunchPoints", onResponse:"handleListLaunchPoints"},
-		{kind:"PalmService", name:"launchPointChanges", service:"palm://com.palm.applicationManager/", method:"launchPointChanges", subscribe:true, onResponse:"handleLaunchPointChanges"},
-		{kind:"PalmService", name:"launch", service:"palm://com.palm.applicationManager/", method:"launch"},
+		{kind:"PalmService", name:"appSearch", service:"luna://com.palm.applicationManager/", method:"searchApps", onResponse: "handleAppSearchResponse"},
+		{kind:"PalmService", name:"listLaunchPoints", service:"luna://com.webos.service.applicationManager/", method:"listLaunchPoints", onResponse:"handleListLaunchPoints"},
+		{kind:"PalmService", name:"launchPointChanges", service:"luna://com.palm.applicationManager/", method:"launchPointChanges", subscribe:true, onResponse:"handleLaunchPointChanges"},
+		{kind:"PalmService", name:"launch", service:"luna://com.palm.applicationManager/", method:"launch"},
 	],
 	
 	create: function() {

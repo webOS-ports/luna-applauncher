@@ -28,7 +28,7 @@ enyo.kind({
 	},
 	components:[
 	            {name:"dbContainer", components:[]},
-	            {name:"dbServiceList", kind:"PalmService", service:"palm://com.palm.db/", onResponse:"handleDbSearchResults", components:[]},
+	            {name:"dbServiceList", kind:"PalmService", service:"luna://com.palm.db/", onResponse:"handleDbSearchResults", components:[]},
 	            {name: "noResultMsg", showing:false, components: [{className: "large-empty-icon"}, {className: "empty-text",content: $L("No Search Results Found")}]}    
     ],
     
