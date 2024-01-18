@@ -9,5 +9,5 @@
 	"defaultWindowType": "system_ui",
 	"noSplashOnLaunch": true,
 	"visible": false,
-	"requiredPermissions": ["accountsservice.management", "application.launcher", "application.operation", "appmanager.management", "database.operation", "location-service.operation", "tempdatabase.operation", "universalsearch.operation"]
+	"requiredPermissions": ["accountsservice.management", "application.launcher", "application.operation", "appmanager.management", "database.operation", "location.query", "tempdatabase.operation", "universalsearch.operation"]
 }
