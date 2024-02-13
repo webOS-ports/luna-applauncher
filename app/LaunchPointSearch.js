@@ -173,7 +173,8 @@ enyo.kind({
 					kind: "Image",
 					domAttributes: {name: "appIcon"},
 					src: appInfo.icon,
-					className: "icon-launch"
+					className: "icon-launch",
+					onerror: "handleIconError"
 				}, {
 					domAttributes: {name: "appTitle"},
 					content: Util.highlightString(this.searchTerm, appInfo.title),
@@ -183,6 +184,12 @@ enyo.kind({
 		}
 		this.$.appContainer.render();
 		this.owner.updateControllerState("apps", "FoundResult");
+	},
+	
+	handleIconError: function(inSender, inEvent) {
+		console.log("Error loading icon: " + inSender.src + ", using default");
+		inSender.setSrc("/usr/palm/applications/com.palm.systemui/images/default-app-icon.png");
+		console.log("The icon source is now: " + inSender.src);
 	},
 	
 	cleanup: function() {
