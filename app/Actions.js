@@ -70,7 +70,7 @@ enyo.kind({
 					this.$.actionListGroup.createComponent({
 						kind: "ActionItem",
 						actionEngineName: $L("More..."),
-						actionInfo: {id:"moreactions", displayName:$L("More..."), iconFilePath:"/usr/lib/luna/system/luna-applauncher/images/search-icon-new.png"},
+						actionInfo: {id:"moreactions", displayName:$L("More..."), iconFilePath:"images/search-icon-new.png"},
 						onItemClicked: "handleActionItemSelected",
 						owner: this
 					});
@@ -112,7 +112,7 @@ enyo.kind({
 		
 		if(appinfo.id == "com.palm.app.email" && this.possibleActionItem == 'emailorweb') {
 			//Launch email with the address.
-			enyo.$.justTypeApp.$.appLauncher.launchEmail(this.searchTerm);
+			enyo.$.justTypeApp.$.appLauncher.launchEmail(enyo.$.justTypeApp.$.justType.getFilterText());
 			return;
 		}
 
