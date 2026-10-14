@@ -62,7 +62,7 @@ enyo.kind({
 			},
 			{kind: "AppMenu", components: [
 			                   			{caption: $L("Preferences"), onclick: "launchPreferences"},
-			                   			{kind: "HelpMenu", target: 'http://help.palm.com/universalsearch/index.html'},
+			                   			{caption: $L("Help"), onclick: "launchHelp"},
 			                   		]
 			}
 			
@@ -177,6 +177,10 @@ enyo.kind({
 	
 	launchPreferences: function() {
 		enyo.$.justTypeApp.$.appLauncher.launchPreferences();
+	},
+	
+	launchHelp: function() {
+		enyo.$.justTypeApp.$.appLauncher.launchHelp();
 	},
 	
 	justTypeDeactivated: function() {

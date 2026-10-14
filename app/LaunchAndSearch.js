@@ -65,7 +65,7 @@ enyo.kind({
 				caption: $L("Search Using...")
 			},
 		{
-			kind:"WebService", name:"suggestSearch", onSuccess:"handleSearchSuggestion",headers: {"Content-Type": "application/json","Connection": "close"}
+			kind:"WebService", name:"suggestSearch", onSuccess:"handleSearchSuggestion", onFailure:"handleSearchSuggestionFailure", headers: {"Content-Type": "application/json"}
 		},
 		{
 			kind:"PalmService", name:"launch", service:"luna://com.webos.service.applicationManager/", method:"launch"
@@ -108,14 +108,14 @@ enyo.kind({
 					this.$.launchAndSearchListGroup.createComponent({
 						kind: "LaunchAndSearchItem",
 						searchEngineName: $L("More..."),
-						searchInfo: {id:"moresearchitem", displayName:$L("More..."), iconFilePath:"/usr/lib/luna/system/luna-applauncher/images/search-icon-new.png"},
+						searchInfo: {id:"moresearchitem", displayName:$L("More..."), iconFilePath:"images/search-icon-new.png"},
 						onItemClicked: "handleLaunchAndSearchSelected",
 						owner: this
 					});
 					break;
 				}
 				if(!this.launchAndSearchEngines[i].iconFilePath)
-					this.launchAndSearchEngines[i].iconFilePath = "/usr/lib/luna/system/luna-applauncher/images/search-icon-generic.png";
+					this.launchAndSearchEngines[i].iconFilePath = "images/search-icon-new.png";
 				this.$.launchAndSearchListGroup.createComponent({
 						kind: "LaunchAndSearchItem",
 						searchEngineName: this.launchAndSearchEngines[i].displayName,
@@ -182,10 +182,9 @@ enyo.kind({
 		var temp;
 		if(item.type == "web" || item.type == "opensearch") {
 			temp = new Util.Template(item.url, syntax);
-			var params = {scene: 'page', target: temp.evaluate({
+			enyo.$.justTypeApp.$.appLauncher.launchBrowser(temp.evaluate({
 				searchTerms: searchString, searchTerm: searchString, "startPage?":''
-			})};
-			this.$.launch.call({id:"org.webosports.app.browser", params:params});
+			}));
 		}
 		else if(item.type == "app") {
 			var appinfo = {};
@@ -291,22 +290,24 @@ enyo.kind({
 		this.$.drawer.setOpen(true);
 	},
 	
+	handleSearchSuggestionFailure: function() {
+		this.$.searchSuggestSpinner.setShowing(false);
+	},
+	
 	handleSuggestItemSelected: function(inSender, inEvent) {
 		var syntax = /(^|.|\r|\n)(#|{\s*(\w+)\s*})/; //matches symbols like '{field}'
 		var temp = new Util.Template(this.defaultSearchEngineInfo.url, syntax);
-		var params = {scene: 'page', target: temp.evaluate({
+		enyo.$.justTypeApp.$.appLauncher.launchBrowser(temp.evaluate({
 				searchTerms: encodeURIComponent(inSender.getContent() || this.searchTerm)
-			})};
-		this.$.launch.call({id:"org.webosports.app.browser", params:params});
+			}));
 	},
 	
 	searchInDefaultEngine: function(inSender, inEvent) {
 		var syntax = /(^|.|\r|\n)(#|{\s*(\w+)\s*})/; //matches symbols like '{field}'
 		var temp = new Util.Template(this.defaultSearchEngineInfo.url, syntax);
-		var params = {scene: 'page', target: temp.evaluate({
+		enyo.$.justTypeApp.$.appLauncher.launchBrowser(temp.evaluate({
 				searchTerms: encodeURIComponent(enyo.$.justTypeApp.$.justType.getFilterText()), "startPage?":''
-			})};
-		this.$.launch.call({id:"org.webosports.app.browser", params:params});
+			}));
 	},
 	
 	onEnterKey: function() {

@@ -1,0 +1,315 @@
+{
+ "returnValue": true,
+ "launchPoints": [
+  {
+   "id": "Waydroid",
+   "launchPointId": "Waydroid_default",
+   "title": "Waydroid",
+   "icon": "/usr/palm/applications/Waydroid/icon.png",
+   "params": ""
+  },
+  {
+   "id": "com.palm.app.accounts",
+   "launchPointId": "com.palm.app.accounts_default",
+   "title": "Accounts",
+   "icon": "/usr/palm/applications/com.palm.app.accounts/icon.png"
+  },
+  {
+   "id": "com.palm.app.backup",
+   "launchPointId": "com.palm.app.backup_default",
+   "title": "Backup",
+   "icon": "/usr/palm/applications/com.palm.app.backup/icon.png"
+  },
+  {
+   "id": "com.palm.app.calendar",
+   "launchPointId": "com.palm.app.calendar_default",
+   "title": "Calendar",
+   "icon": "/usr/palm/applications/com.palm.app.calendar/images/icon-256x256.png"
+  },
+  {
+   "id": "com.palm.app.clock",
+   "launchPointId": "com.palm.app.clock_default",
+   "title": "Clock",
+   "icon": "/usr/palm/applications/com.palm.app.clock/icon.png"
+  },
+  {
+   "id": "com.palm.app.contacts",
+   "launchPointId": "com.palm.app.contacts_default",
+   "title": "Contacts",
+   "icon": "/usr/palm/applications/com.palm.app.contacts/icon.png"
+  },
+  {
+   "id": "com.palm.app.email",
+   "launchPointId": "com.palm.app.email_default",
+   "title": "Email",
+   "icon": "/usr/palm/applications/com.palm.app.email/icon.png"
+  },
+  {
+   "id": "com.palm.app.preware2",
+   "launchPointId": "com.palm.app.preware2_default",
+   "title": "Preware 2",
+   "icon": "/usr/palm/applications/com.palm.app.preware2/icon.png"
+  },
+  {
+   "id": "com.webos.app.test.youtube",
+   "launchPointId": "com.webos.app.test.youtube_default",
+   "title": "Youtube",
+   "icon": "/usr/palm/applications/com.webos.app.test.youtube/icon.png"
+  },
+  {
+   "id": "com.webos.app.videocall",
+   "launchPointId": "com.webos.app.videocall_default",
+   "title": "Video Call",
+   "icon": "/usr/palm/applications/com.webos.app.videocall/icon.png"
+  },
+  {
+   "id": "org.mer.app.fingerterm",
+   "launchPointId": "org.mer.app.fingerterm_default",
+   "title": "Fingerterm",
+   "icon": "/usr/palm/applications/org.mer.app.fingerterm/icon.png",
+   "params": ""
+  },
+  {
+   "id": "org.mer.app.sdl2_opengles1_test",
+   "launchPointId": "org.mer.app.sdl2_opengles1_test_default",
+   "title": "SDL2 OpenGLES 1 Test",
+   "icon": "/usr/palm/applications/org.mer.app.sdl2_opengles1_test/icon.png"
+  },
+  {
+   "id": "org.mer.app.sdl2_opengles2_test",
+   "launchPointId": "org.mer.app.sdl2_opengles2_test_default",
+   "title": "SDL2 OpenGLES 2 Test",
+   "icon": "/usr/palm/applications/org.mer.app.sdl2_opengles2_test/icon.png"
+  },
+  {
+   "id": "org.webosports.app.atlas",
+   "launchPointId": "org.webosports.app.atlas_default",
+   "title": "Atlas Web",
+   "icon": "/usr/palm/applications/org.webosports.app.atlas/icon.png"
+  },
+  {
+   "id": "org.webosports.app.calculator",
+   "launchPointId": "org.webosports.app.calculator_default",
+   "title": "Calculator",
+   "icon": "/usr/palm/applications/org.webosports.app.calculator/icon.png"
+  },
+  {
+   "id": "org.webosports.app.cdav",
+   "launchPointId": "org.webosports.app.cdav_default",
+   "title": "C+DAV Sync App",
+   "icon": "/usr/palm/applications/org.webosports.app.cdav/images/caldav-1024.png"
+  },
+  {
+   "id": "org.webosports.app.filemanager",
+   "launchPointId": "org.webosports.app.filemanager_default",
+   "title": "File Manager",
+   "icon": "/usr/palm/applications/org.webosports.app.filemanager/icon.png"
+  },
+  {
+   "id": "org.webosports.app.maps",
+   "launchPointId": "org.webosports.app.maps_default",
+   "title": "Maps",
+   "icon": "/usr/palm/applications/org.webosports.app.maps/icon.png"
+  },
+  {
+   "id": "org.webosports.app.memos",
+   "launchPointId": "org.webosports.app.memos_default",
+   "title": "Memos",
+   "icon": "/usr/palm/applications/org.webosports.app.memos/icon.png"
+  },
+  {
+   "id": "org.webosports.app.messaging",
+   "launchPointId": "org.webosports.app.messaging_default",
+   "title": "Messaging",
+   "icon": "/usr/palm/applications/org.webosports.app.messaging/icon.png"
+  },
+  {
+   "id": "org.webosports.app.messwerk",
+   "launchPointId": "org.webosports.app.messwerk_default",
+   "title": "Messwerk",
+   "icon": "/usr/palm/applications/org.webosports.app.messwerk/harbour-messwerk.png",
+   "params": ""
+  },
+  {
+   "id": "org.webosports.app.pdf",
+   "launchPointId": "org.webosports.app.pdf_default",
+   "title": "PDF Viewer",
+   "icon": "/usr/palm/applications/org.webosports.app.pdf/icon.png"
+  },
+  {
+   "id": "org.webosports.app.phone",
+   "launchPointId": "org.webosports.app.phone_default",
+   "title": "Phone",
+   "icon": "/usr/palm/applications/org.webosports.app.phone/icon.png"
+  },
+  {
+   "id": "org.webosports.app.photos",
+   "launchPointId": "org.webosports.app.photos_default",
+   "title": "Photos & Videos",
+   "icon": "/usr/palm/applications/org.webosports.app.photos/icon.png"
+  },
+  {
+   "id": "org.webosports.app.settings.accessibility",
+   "launchPointId": "org.webosports.app.settings.accessibility_default",
+   "title": "Accessibility",
+   "icon": "/usr/palm/applications/org.webosports.app.settings.accessibility/qml/images/icons/icon-accessibility.png"
+  },
+  {
+   "id": "org.webosports.app.settings.appearance",
+   "launchPointId": "org.webosports.app.settings.appearance_default",
+   "title": "Appearance",
+   "icon": "/usr/palm/applications/org.webosports.app.settings.appearance/qml/images/icons/icon-appearance.png"
+  },
+  {
+   "id": "org.webosports.app.settings.applications",
+   "launchPointId": "org.webosports.app.settings.applications_default",
+   "title": "Applications",
+   "icon": "/usr/palm/applications/org.webosports.app.settings.applications/qml/images/icons/icon-applications.png"
+  },
+  {
+   "id": "org.webosports.app.settings.battery",
+   "launchPointId": "org.webosports.app.settings.battery_default",
+   "title": "Battery",
+   "icon": "/usr/palm/applications/org.webosports.app.settings.battery/qml/images/icons/icon-battery.png"
+  },
+  {
+   "id": "org.webosports.app.settings.bluetooth",
+   "launchPointId": "org.webosports.app.settings.bluetooth_default",
+   "title": "Bluetooth",
+   "icon": "/usr/palm/applications/org.webosports.app.settings.bluetooth/qml/images/icons/icon-bluetooth.png"
+  },
+  {
+   "id": "org.webosports.app.settings.dateandtime",
+   "launchPointId": "org.webosports.app.settings.dateandtime_default",
+   "title": "Date & Time",
+   "icon": "/usr/palm/applications/org.webosports.app.settings.dateandtime/qml/images/icons/icon-dateandtime.png"
+  },
+  {
+   "id": "org.webosports.app.settings.deviceinfo",
+   "launchPointId": "org.webosports.app.settings.deviceinfo_default",
+   "title": "Device Info",
+   "icon": "/usr/palm/applications/org.webosports.app.settings.deviceinfo/qml/images/icons/icon-deviceinfo.png"
+  },
+  {
+   "id": "org.webosports.app.settings.devmodeswitcher",
+   "launchPointId": "org.webosports.app.settings.devmodeswitcher_default",
+   "title": "Developer Mode",
+   "icon": "/usr/palm/applications/org.webosports.app.settings.devmodeswitcher/qml/images/icons/icon-devmodeswitcher.png"
+  },
+  {
+   "id": "org.webosports.app.settings.display",
+   "launchPointId": "org.webosports.app.settings.display_default",
+   "title": "Display",
+   "icon": "/usr/palm/applications/org.webosports.app.settings.display/qml/images/icons/icon-display.png"
+  },
+  {
+   "id": "org.webosports.app.settings.encryption",
+   "launchPointId": "org.webosports.app.settings.encryption_default",
+   "title": "Encryption",
+   "icon": "/usr/palm/applications/org.webosports.app.settings.encryption/qml/images/icons/icon-encryption.png"
+  },
+  {
+   "id": "org.webosports.app.settings.exhibitionpreferences",
+   "launchPointId": "org.webosports.app.settings.exhibitionpreferences_default",
+   "title": "Exhibition",
+   "icon": "/usr/palm/applications/org.webosports.app.settings.exhibitionpreferences/qml/images/icons/icon-exhibitionpreferences.png"
+  },
+  {
+   "id": "org.webosports.app.settings.languagepicker",
+   "launchPointId": "org.webosports.app.settings.languagepicker_default",
+   "title": "Regional Settings",
+   "icon": "/usr/palm/applications/org.webosports.app.settings.languagepicker/qml/images/icons/icon-languagepicker.png"
+  },
+  {
+   "id": "org.webosports.app.settings.location",
+   "launchPointId": "org.webosports.app.settings.location_default",
+   "title": "Location Services",
+   "icon": "/usr/palm/applications/org.webosports.app.settings.location/qml/images/icons/icon-location.png"
+  },
+  {
+   "id": "org.webosports.app.settings.notifications",
+   "launchPointId": "org.webosports.app.settings.notifications_default",
+   "title": "Notifications",
+   "icon": "/usr/palm/applications/org.webosports.app.settings.notifications/qml/images/icons/icon-notifications.png"
+  },
+  {
+   "id": "org.webosports.app.settings.printmanager",
+   "launchPointId": "org.webosports.app.settings.printmanager_default",
+   "title": "Print Manager",
+   "icon": "/usr/palm/applications/org.webosports.app.settings.printmanager/qml/images/icons/icon-printmanager.png"
+  },
+  {
+   "id": "org.webosports.app.settings.screenlock",
+   "launchPointId": "org.webosports.app.settings.screenlock_default",
+   "title": "Screen & Lock",
+   "icon": "/usr/palm/applications/org.webosports.app.settings.screenlock/qml/images/icons/icon-screenlock.png"
+  },
+  {
+   "id": "org.webosports.app.settings.searchpreferences",
+   "launchPointId": "org.webosports.app.settings.searchpreferences_default",
+   "title": "Just Type",
+   "icon": "/usr/palm/applications/org.webosports.app.settings.searchpreferences/qml/images/icons/icon-searchpreferences.png"
+  },
+  {
+   "id": "org.webosports.app.settings.soundsandalerts",
+   "launchPointId": "org.webosports.app.settings.soundsandalerts_default",
+   "title": "Sounds & Ringtones",
+   "icon": "/usr/palm/applications/org.webosports.app.settings.soundsandalerts/qml/images/icons/icon-soundsandalerts.png"
+  },
+  {
+   "id": "org.webosports.app.settings.storage",
+   "launchPointId": "org.webosports.app.settings.storage_default",
+   "title": "Storage",
+   "icon": "/usr/palm/applications/org.webosports.app.settings.storage/qml/images/icons/icon-storage.png"
+  },
+  {
+   "id": "org.webosports.app.settings.tethering",
+   "launchPointId": "org.webosports.app.settings.tethering_default",
+   "title": "Tethering",
+   "icon": "/usr/palm/applications/org.webosports.app.settings.tethering/qml/images/icons/icon-tethering.png"
+  },
+  {
+   "id": "org.webosports.app.settings.textassist",
+   "launchPointId": "org.webosports.app.settings.textassist_default",
+   "title": "Text Assist",
+   "icon": "/usr/palm/applications/org.webosports.app.settings.textassist/qml/images/icons/icon-textassist.png"
+  },
+  {
+   "id": "org.webosports.app.settings.usb",
+   "launchPointId": "org.webosports.app.settings.usb_default",
+   "title": "USB",
+   "icon": "/usr/palm/applications/org.webosports.app.settings.usb/qml/images/icons/icon-usb.png"
+  },
+  {
+   "id": "org.webosports.app.settings.vpn",
+   "launchPointId": "org.webosports.app.settings.vpn_default",
+   "title": "VPN",
+   "icon": "/usr/palm/applications/org.webosports.app.settings.vpn/qml/images/icons/icon-vpn.png"
+  },
+  {
+   "id": "org.webosports.app.settings.wifi",
+   "launchPointId": "org.webosports.app.settings.wifi_default",
+   "title": "Wi-Fi",
+   "icon": "/usr/palm/applications/org.webosports.app.settings.wifi/qml/images/icons/icon-wifi.png"
+  },
+  {
+   "id": "org.webosports.app.terminal",
+   "launchPointId": "org.webosports.app.terminal_default",
+   "title": "Terminal",
+   "icon": "/usr/palm/applications/org.webosports.app.terminal/icon.png",
+   "params": ""
+  },
+  {
+   "id": "org.webosports.app.testr",
+   "launchPointId": "org.webosports.app.testr_default",
+   "title": "Testr",
+   "icon": "/usr/palm/applications/org.webosports.app.testr/icon.png"
+  },
+  {
+   "id": "org.webosports.app.tweaks",
+   "launchPointId": "org.webosports.app.tweaks_default",
+   "title": "Tweaks",
+   "icon": "/usr/palm/applications/org.webosports.app.tweaks/icon.png"
+  }
+ ]
+}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Just Type tests</title>
+	<script src="fake-palm.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		// ?fw=<file URL of .../enyo/0.10/framework>, set by run.sh
+		var fw = decodeURIComponent((location.search.match(/[?&]fw=([^&]*)/) || [])[1] || "");
+		document.write('<script src="' + fw + '/enyo.js" launch="app=depends.js" type="text/javascript"><\/script>');
+	</script>
+</head>
+<body>
+	<script type="text/javascript">
+		view = new JustTypeApp();
+		view.renderInto(document.body);
+		runSpecs();
+	</script>
+</body>
+</html>

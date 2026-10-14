@@ -20,7 +20,7 @@ enyo.kind({
 	name:"AppLauncher",
 	kind: "Component",
 	components: [
-	             {kind:"PalmService", name:"launch", service:"luna://com.palm.applicationManager/", method:"open"},
+	             {kind:"PalmService", name:"launch", service:"luna://com.webos.service.applicationManager/", method:"launch"},
 	             {name: "contactPseudoDetails", kind: "com.palm.library.contactsui.detailsDialog", showDone: false, onAddToNew: "addToNewContact", onAddToExisting: "addToNewContact", onCancelClicked:"handlePseudoContactCancel"}
 	],
 	
@@ -29,12 +29,11 @@ enyo.kind({
 	},
 	
 	launchEmail: function(address) {
-  		this.$.launch.call({target:'mailto:'+address});
+  		this.$.launch.call({id:'com.palm.app.email', params:{target:'mailto:'+address}});
   	},
   	
   	launchBrowser: function(url) {
-		var params = {scene: 'page', target: url};
-		this.$.launch.call({id:"org.webosports.app.browser", params:params});
+		this.$.launch.call({id:"org.webosports.app.atlas", params:{target: url}});
 	},
 	
 	launchMessaging: function(contactId, addr, label, serviceName, type) {
@@ -173,7 +172,7 @@ enyo.kind({
 	
 	launchExistingContact: function(id) {
 		var params = {'id': id, 'launchType':'showPerson'};
-		this.$.launch.call({id:'org.webosports.app.contacts', params:params});
+		this.$.launch.call({id:'com.palm.app.contacts', params:params});
 	},
 	
 	launchReminder:function(id){
@@ -182,16 +181,15 @@ enyo.kind({
 			personId:id,
 			focusField:true
 		}
-		this.$.launch.call({id:'org.webosports.app.contacts', params:params});
+		this.$.launch.call({id:'com.palm.app.contacts', params:params});
 	},
 	
 	launchHelp: function() {
-		 var params =  {target: 'http://help.palm.com/universalsearch/index.html'};
-		 this.$.launch.call({id:"com.palm.app.help", params:params});
+		 this.$.launch.call({id:"org.webosports.app.settings.help"});
 	},
 	
 	launchPreferences: function() {
-		 this.$.launch.call({id:"org.webosports.app.settings",params:{page:"SearchPreferences"}});
+		 this.$.launch.call({id:"org.webosports.app.settings.searchpreferences"});
 	},
 	
 	launchApp: function(id, param) {
