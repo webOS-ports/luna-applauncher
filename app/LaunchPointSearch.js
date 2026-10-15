@@ -64,6 +64,7 @@ enyo.kind({
 	
 	handleListLaunchPoints: function(inSender, inResponse) {
 		this.allApps = inResponse.launchPoints || [];
+		this.owner.appIconsLoaded();
 	},
 	
 	handleLaunchPointChanges: function(inSender, inResponse) {
@@ -122,6 +123,15 @@ enyo.kind({
 		return null;
 	},
 	
+	
+	getAppIcon: function(appId) {
+		var lp = this.getAppInfo(appId + "_default");
+		for (var i=0; !lp && i<this.allApps.length; i++) {
+			if (this.allApps[i].id == appId)
+				lp = this.allApps[i];
+		}
+		return (lp && lp.icon) || "";
+	},
 	
 	searchTermChanged: function() {
 		if(this.preferences == "false")
