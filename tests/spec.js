@@ -114,6 +114,53 @@
 		});
 	});
 
+	// Real device data: the search service delivers Quick Actions and content
+	// searches with an empty iconFilePath.
+	var appIcon = function(appId) {
+		var lp = FakeBus.fixtures.launchPoints.launchPoints.filter(function(l) {
+			return l.launchPointId == appId + "_default";
+		})[0];
+		return lp && lp.icon;
+	};
+	var checkIcons = function() {
+		var acts = itemsOf(mv().$.actions.$.actionListGroup, "ActionItem");
+		assertEq(acts.map(function(a) { return a.getActionInfo().id; }),
+			FakeBus.fixtures.searchList.ActionList.map(function(a) { return a.id; }), "Quick Actions");
+		acts.forEach(function(a) {
+			var id = a.getActionInfo().id;
+			assert(appIcon(id), "fixture has no launch point icon for " + id);
+			assertEq(a.$.icon.src, appIcon(id), id + " action icon");
+		});
+		var db = mv().$.dbSearch;
+		FakeBus.fixtures.searchList.DBSearchItemList.forEach(function(d) {
+			var node = db.$["dbNode-" + d.id];
+			assert(node, "no content row for " + d.id);
+			var icon = node.$.icon;
+			var hasOwn = (icon.domStyles["background-image"] || "").indexOf(appIcon(d.id)) != -1;
+			assert(hasOwn || icon.hasClass("email"), d.id + " content icon: " + JSON.stringify(icon.domStyles) + " " + icon.className);
+		});
+	};
+
+	test("Quick Actions and content searches show the app icon when the service sends none", function() {
+		assert(FakeBus.fixtures.searchList.ActionList.length > 0, "fixture has no Quick Actions");
+		FakeBus.fixtures.searchList.ActionList.forEach(function(a) { assertEq(a.iconFilePath, "", a.id + " fixture icon"); });
+		return waitFor(function() { return itemsOf(mv().$.actions.$.actionListGroup, "ActionItem").length; }, "Quick Actions").then(checkIcons);
+	});
+
+	test("icons are filled in when launch points arrive after the search list", function() {
+		var lps = mv().$.launchPointSearch;
+		var list = JSON.parse(JSON.stringify(FakeBus.fixtures.searchList));
+		lps.allApps = [];
+		FakeBus.publish("com.palm.universalsearch/getUniversalSearchList", list);
+		return waitFor(function() {
+			var a = itemsOf(mv().$.actions.$.actionListGroup, "ActionItem")[0];
+			return a && !a.getActionInfo().iconFilePath;
+		}, "rows without icons").then(function() {
+			lps.handleListLaunchPoints(lps, FakeBus.fixtures.launchPoints);
+			checkIcons();
+		});
+	});
+
 	test("app menu: Preferences opens the Just Type settings page", function() {
 		var item = menuItem("Preferences");
 		assert(item, "no Preferences menu item");

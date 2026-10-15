@@ -121,10 +121,33 @@ enyo.kind({
 	},
 	
 	handleUniversalSearchListResponse: function(inSender, inResponse) {
+		this.searchList = inResponse;
+		this.fillAppIcons(inResponse.ActionList);
+		this.fillAppIcons(inResponse.DBSearchItemList);
 		this.$.launchAndSearch.setDefaultSearchEngine(inResponse.defaultSearchEngine);
 		this.$.launchAndSearch.setLaunchAndSearchEngines(inResponse.UniversalSearchList);
 		this.$.actions.setActionEngines(inResponse.ActionList);
 		this.$.dbSearch.setDbSearchItems(inResponse.DBSearchItemList);
+	},
+	
+	// The search service drops app icons it cannot find on disk, and SAM hands
+	// it appinfo-relative paths, so Quick Actions and content searches arrive
+	// without one. Use the app's launch point icon instead.
+	fillAppIcons: function(items) {
+		enyo.forEach(items || [], function(item) {
+			if(!item.iconFilePath)
+				item.iconFilePath = this.$.launchPointSearch.getAppIcon(item.id);
+		}, this);
+	},
+	
+	// Launch points can arrive after the search list: fill in and redraw.
+	appIconsLoaded: function() {
+		if(!this.searchList)
+			return;
+		this.fillAppIcons(this.searchList.ActionList);
+		this.fillAppIcons(this.searchList.DBSearchItemList);
+		this.$.actions.populateActionList(true);
+		this.$.dbSearch.dbSearchItemsChanged();
 	},
 	
 	showView: function(viewName) {

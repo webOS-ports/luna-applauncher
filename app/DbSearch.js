@@ -342,8 +342,10 @@ enyo.kind({
 			this.$.icon.addClass("email");
 		else if(this.dbSearchItemId == "org.webosports.app.browser")
 			this.$.icon.addClass("web");
-		else if(this.iconFilePath && !Util.isBlank(this.iconFilePath))
+		else if(this.iconFilePath && !Util.isBlank(this.iconFilePath)) {
 			this.$.icon.applyStyle("background-image", "url(" + this.iconFilePath + ")");
+			this.$.icon.applyStyle("background-size", "contain");
+		}
 		else
 			this.$.icon.addClass("generic");
 	},
