@@ -384,6 +384,69 @@
 		}, Promise.resolve());
 	});
 
+	// A content search with results shows how many in a pill at the row's
+	// end; the number has to sit inside the pill, centred.
+	test("a content search's result count is centred in its pill", function() {
+		var url = "com.palm.db/search";
+		var saved = FakeBus.handlers[url];
+		var twenty = [];
+		for (var i = 0; i < 20; i++)
+			twenty.push({_id: "e" + i, _kind: "com.palm.calendarevent:1", subject: "Event " + i, dtstart: 0});
+		FakeBus.handlers[url] = function(p) {
+			return {returnValue: true, results: p.query && p.query.from == "com.palm.calendarevent:1" ? twenty : []};
+		};
+		var restore = function() { FakeBus.handlers[url] = saved; };
+		return search("mich").then(function() {
+			var node;
+			return waitFor(function() {
+				node = mv().$.dbSearch.$["dbNode-com.palm.app.calendar"];
+				return node && node.$.resultsCount.content == 20 && visible(node);
+			}, "the count").then(function() {
+				var pill = node.$.resultCountContainer.hasNode().getBoundingClientRect();
+				var text = node.$.resultsCount.hasNode().getBoundingClientRect();
+				var row = node.hasNode().getBoundingClientRect();
+				assert(text.top >= pill.top - 1 && text.bottom <= pill.bottom + 1,
+					"count outside its pill: text " + text.top + "-" + text.bottom + ", pill " + pill.top + "-" + pill.bottom);
+				var mid = function(r) { return (r.top + r.bottom) / 2; };
+				assert(Math.abs(mid(text) - mid(pill)) <= 2, "count not centred in its pill");
+				assert(Math.abs(mid(pill) - mid(row)) <= 3, "pill not centred in the row");
+				var bg = getComputedStyle(node.$.resultCountContainer.hasNode()).backgroundColor;
+				assert(bg && bg != "transparent" && bg != "rgba(0, 0, 0, 0)", "pill has no background: " + bg);
+				// A pill, not a square: ends rounded to half its height.
+				var radius = parseFloat(getComputedStyle(node.$.resultCountContainer.hasNode()).borderTopLeftRadius);
+				assert(radius >= pill.height / 2 - 1, "not a pill: corner radius " + radius + " for height " + pill.height);
+			});
+		}).then(restore, function(e) { restore(); throw e; });
+	});
+
+	// The search service restarted (an update, a crash): the subscription
+	// ends with a failure, and the lists it sends from then on - with the
+	// providers of apps it has registered since - must still reach Just Type.
+	test("the search list survives the search service restarting", function() {
+		var url = "com.palm.universalsearch/getUniversalSearchList";
+		var before = FakeBus.callsTo(url).length;
+		var list = JSON.parse(JSON.stringify(FakeBus.fixtures.searchList));
+		list.ActionList.push({id: "org.webosports.app.music", displayName: "Search Music", url: "org.webosports.app.music",
+			launchParam: "search", iconFilePath: "", enabled: true});
+		var saved = FakeBus.handlers[url];
+		FakeBus.handlers[url] = function() { return list; };
+		FakeBus.publish(url, {returnValue: false, errorCode: -1,
+			errorText: "Service does not exist: com.palm.universalsearch."});
+		return waitFor(function() { return FakeBus.callsTo(url).length > before; }, "a new subscription", 30000).then(function() {
+			return waitFor(function() {
+				return itemsOf(mv().$.actions.$.actionListGroup, "ActionItem").some(function(a) {
+					return a.getActionInfo().id == "org.webosports.app.music";
+				});
+			}, "Music's Quick Action");
+		}).then(function() {
+			FakeBus.handlers[url] = saved;
+			FakeBus.publish(url, FakeBus.fixtures.searchList);
+		}, function(e) {
+			FakeBus.handlers[url] = saved;
+			throw e;
+		});
+	});
+
 	test("every launch reached an installed app and nothing used the legacy open API", function() {
 		var all = FakeBus.allCalls;
 		var launches = all.filter(function(c) { return c.url == SAM_LAUNCH; });
