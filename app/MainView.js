@@ -61,10 +61,12 @@ enyo.kind({
 			]
 		},
 		{
-			kind:"PalmService", name:"getSearchEngines", service:"luna://com.palm.universalsearch/", method:"getUniversalSearchList", subscribe:true, onSuccess:"handleUniversalSearchListResponse" 
+			// resubscribe: the subscription ends with an error when the search
+			// service restarts; without it Just Type keeps the lists it had then.
+			kind:"PalmService", name:"getSearchEngines", service:"luna://com.palm.universalsearch/", method:"getUniversalSearchList", subscribe:true, resubscribe:true, onSuccess:"handleUniversalSearchListResponse" 
 		},
 		{
-			kind:"PalmService", name:"getAllSearchPreference", service:"luna://com.palm.universalsearch/", method:"getAllSearchPreference", subscribe:true, onSuccess:"handleSearchPreferenceResponse"
+			kind:"PalmService", name:"getAllSearchPreference", service:"luna://com.palm.universalsearch/", method:"getAllSearchPreference", subscribe:true, resubscribe:true, onSuccess:"handleSearchPreferenceResponse"
 		},
 	],
 	

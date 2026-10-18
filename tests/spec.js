@@ -384,6 +384,34 @@
 		}, Promise.resolve());
 	});
 
+	// The search service restarted (an update, a crash): the subscription
+	// ends with a failure, and the lists it sends from then on - with the
+	// providers of apps it has registered since - must still reach Just Type.
+	test("the search list survives the search service restarting", function() {
+		var url = "com.palm.universalsearch/getUniversalSearchList";
+		var before = FakeBus.callsTo(url).length;
+		var list = JSON.parse(JSON.stringify(FakeBus.fixtures.searchList));
+		list.ActionList.push({id: "org.webosports.app.music", displayName: "Search Music", url: "org.webosports.app.music",
+			launchParam: "search", iconFilePath: "", enabled: true});
+		var saved = FakeBus.handlers[url];
+		FakeBus.handlers[url] = function() { return list; };
+		FakeBus.publish(url, {returnValue: false, errorCode: -1,
+			errorText: "Service does not exist: com.palm.universalsearch."});
+		return waitFor(function() { return FakeBus.callsTo(url).length > before; }, "a new subscription", 30000).then(function() {
+			return waitFor(function() {
+				return itemsOf(mv().$.actions.$.actionListGroup, "ActionItem").some(function(a) {
+					return a.getActionInfo().id == "org.webosports.app.music";
+				});
+			}, "Music's Quick Action");
+		}).then(function() {
+			FakeBus.handlers[url] = saved;
+			FakeBus.publish(url, FakeBus.fixtures.searchList);
+		}, function(e) {
+			FakeBus.handlers[url] = saved;
+			throw e;
+		});
+	});
+
 	test("every launch reached an installed app and nothing used the legacy open API", function() {
 		var all = FakeBus.allCalls;
 		var launches = all.filter(function(c) { return c.url == SAM_LAUNCH; });
