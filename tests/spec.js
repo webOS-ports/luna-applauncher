@@ -447,6 +447,66 @@
 		});
 	});
 
+	// The card shell slides Just Type in and only gives it the focus. A focus
+	// restored with the window does not ask for the on-screen keyboard, so the
+	// field is focused again by a call, once the slide is over.
+	var keyboardCase = function(name, setup, check) {
+		test(name, function() {
+			var node = app().searchNode();
+			var realHasFocus = document.hasFocus;
+			document.hasFocus = function() { return true; };
+			var blurs = 0, focuses = 0;
+			var onBlur = function() { blurs++; }, onFocus = function() { focuses++; };
+			node.focus();
+			node.textContent = "ab";
+			var range = document.createRange();
+			range.setStart(node.firstChild, 2);
+			range.collapse(true);
+			getSelection().removeAllRanges();
+			getSelection().addRange(range);
+			node.addEventListener("blur", onBlur);
+			node.addEventListener("focus", onFocus);
+			var done = function() {
+				node.removeEventListener("blur", onBlur);
+				node.removeEventListener("focus", onFocus);
+				document.hasFocus = realHasFocus;
+				jt().clearSearchText();
+			};
+			var counts = function() { return {blurs: blurs, focuses: focuses}; };
+			setup(node);
+			window.dispatchEvent(new FocusEvent("focus"));
+			return new Promise(function(r) { setTimeout(r, 100); }).then(function() {
+				assertEq(counts(), {blurs: 0, focuses: 0}, "refocused while Just Type is still sliding in");
+				return new Promise(function(r) { setTimeout(r, app().keyboardDelayMs + 100); });
+			}).then(function() {
+				check(node, counts());
+			}).then(done, function(e) { done(); throw e; });
+		});
+	};
+
+	keyboardCase("the field asks for the keyboard again once Just Type has slid in, caret kept",
+		function() {},
+		function(node, c) {
+			assertEq(c, {blurs: 1, focuses: 1}, "blur and focus calls");
+			assert(document.activeElement === node, "the field lost the focus");
+			var s = getSelection();
+			assert(s.anchorNode === node.firstChild && s.anchorOffset === 2,
+				"caret moved to " + s.anchorOffset + " - typed keys would land out of order");
+		});
+
+	keyboardCase("what is being composed is not cut off",
+		function(node) { node.dispatchEvent(new CompositionEvent("compositionstart")); },
+		function(node, c) {
+			node.dispatchEvent(new CompositionEvent("compositionend"));
+			assertEq(c, {blurs: 0, focuses: 0}, "blur and focus calls during a composition");
+		});
+
+	keyboardCase("losing the focus before the slide is over asks for nothing",
+		function() { setTimeout(function() { window.dispatchEvent(new FocusEvent("blur")); }, 50); },
+		function(node, c) {
+			assertEq(c, {blurs: 0, focuses: 0}, "blur and focus calls after the window lost the focus");
+		});
+
 	test("every launch reached an installed app and nothing used the legacy open API", function() {
 		var all = FakeBus.allCalls;
 		var launches = all.filter(function(c) { return c.url == SAM_LAUNCH; });
