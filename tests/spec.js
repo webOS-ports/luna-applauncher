@@ -449,7 +449,7 @@
 
 	// The card shell slides Just Type in and only gives it the focus. A focus
 	// restored with the window does not ask for the on-screen keyboard, so the
-	// field is focused again by a call, once the slide is over.
+	// field is focused again by a call, right after the window's focus event.
 	var keyboardCase = function(name, setup, check) {
 		test(name, function() {
 			var node = app().searchNode();
@@ -473,19 +473,20 @@
 				jt().clearSearchText();
 			};
 			var counts = function() { return {blurs: blurs, focuses: focuses}; };
-			setup(node);
+			setup.before(node);
 			window.dispatchEvent(new FocusEvent("focus"));
+			assertEq(counts(), {blurs: 0, focuses: 0}, "refocused inside the window's focus event");
+			setup.after(node);
 			return new Promise(function(r) { setTimeout(r, 100); }).then(function() {
-				assertEq(counts(), {blurs: 0, focuses: 0}, "refocused while Just Type is still sliding in");
-				return new Promise(function(r) { setTimeout(r, app().keyboardDelayMs + 100); });
-			}).then(function() {
 				check(node, counts());
 			}).then(done, function(e) { done(); throw e; });
 		});
 	};
 
-	keyboardCase("the field asks for the keyboard again once Just Type has slid in, caret kept",
-		function() {},
+	var nothing = function() {};
+
+	keyboardCase("the field asks for the keyboard again once Just Type has the focus, caret kept",
+		{before: nothing, after: nothing},
 		function(node, c) {
 			assertEq(c, {blurs: 1, focuses: 1}, "blur and focus calls");
 			assert(document.activeElement === node, "the field lost the focus");
@@ -495,14 +496,14 @@
 		});
 
 	keyboardCase("what is being composed is not cut off",
-		function(node) { node.dispatchEvent(new CompositionEvent("compositionstart")); },
+		{before: function(node) { node.dispatchEvent(new CompositionEvent("compositionstart")); }, after: nothing},
 		function(node, c) {
 			node.dispatchEvent(new CompositionEvent("compositionend"));
 			assertEq(c, {blurs: 0, focuses: 0}, "blur and focus calls during a composition");
 		});
 
-	keyboardCase("losing the focus before the slide is over asks for nothing",
-		function() { setTimeout(function() { window.dispatchEvent(new FocusEvent("blur")); }, 50); },
+	keyboardCase("losing the focus again at once asks for nothing",
+		{before: nothing, after: function() { window.dispatchEvent(new FocusEvent("blur")); }},
 		function(node, c) {
 			assertEq(c, {blurs: 0, focuses: 0}, "blur and focus calls after the window lost the focus");
 		});

@@ -24,14 +24,6 @@ enyo.kind({
 	            {kind:"AppLauncher"},
 	            {kind: "ApplicationEvents", onWindowActivated: "handleWindowActivate", onWindowDeactivated:"handleWindowDeActivated"}
 	            ],
-	/*
-	 * How long after the window gets the focus the field asks for the keyboard:
-	 * past the card shell's 150 ms slide of the Just Type window. A keyboard
-	 * that comes up while the window is still sliding in leaves Just Type off
-	 * screen behind it.
-	 */
-	keyboardDelayMs: 300,
-
 	create:function() {
 		this.inherited(arguments);
 		/*
@@ -43,7 +35,7 @@ enyo.kind({
 		 * is restored does not ask for the on-screen keyboard: the field has
 		 * the caret, a hardware keyboard types into it, and no keyboard
 		 * appears until the field is tapped. A focus() call does ask, so make
-		 * one once the window is in place.
+		 * one as soon as the focus has arrived.
 		 */
 		this.composing = false;
 		this.keyboardJob = null;
@@ -67,7 +59,8 @@ enyo.kind({
 
 	windowFocused: function() {
 		this.cancelKeyboardJob();
-		this.keyboardJob = setTimeout(enyo.bind(this, "askForKeyboard"), this.keyboardDelayMs);
+		// After the focus event, once the focus it restores is in place.
+		this.keyboardJob = setTimeout(enyo.bind(this, "askForKeyboard"), 0);
 	},
 
 	cancelKeyboardJob: function() {
